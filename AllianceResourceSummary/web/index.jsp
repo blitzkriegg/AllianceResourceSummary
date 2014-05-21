@@ -1,20 +1,18 @@
-<%-- 
-    Document   : index
-    Created on : May 10, 2014, 10:37:35 PM
-    Author     : Michael
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
+<%@ page import="java.sql.*" %>
 <html>
     <head>
         <title>Alliance Resource Management System</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="media/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/e9421181788/integration/bootstrap/3/dataTables.bootstrap.css">
-        <script src="media/js/jquery.js" type="text/javascript"/>
-        <script src="media/js/bootstrap.js" type="text/javascript"/>
-        <script src="media/js/jquery.dataTables.js" type="text/javascript"/>    
+        <script src="media/js/jquery.js" type="text/javascript"></script>
+        <script src="media/js/jquery.dataTables.js" type="text/javascript"></script>    
+        <script src="media/js/bootstrap.js" type="text/javascript"></script>
         <style type="text/css">
             @import "media/css/jquery.dataTables.css";
         </style>
@@ -40,6 +38,7 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 $('#datatables').dataTable();
+                $('#test').dataTable();
             });
         </script>
     </head>
@@ -55,52 +54,8 @@
 			</ul>
                     </div>
                 </nav>
-                
-                
-                <!-- Button trigger modal -->
-                <button class="btn pull-right" data-toggle="modal" data-target="#myModal">
-                  Search By:
-                </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">Search data</h4>
-                            </div>
-                            <div class="modal-body">
-                                <table>
-                                    <tbody>
-                                        <div class="container">
-                                            <div class="input-group">
-                                                <ul>
-                                                    <span>
-                                                        <input type="checkbox">
-                                                    </span>
-                                                    ID
-                                                </ul>
-                                                <ul>
-                                                    <span>
-                                                        <input type="checkbox">
-                                                    </span>
-                                                Name
-                                                </ul>
-                                            </div><!-- /input-group -->
-                                        </div><!-- /.col-lg-6 -->
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                              <button type="button" class="btn">Ok</button>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- Modal -->
-                <div></div>
-			
+                <!--table1-->
                 <table  id="datatables" class="display">
                     <thead>
                         <tr>
@@ -185,6 +140,69 @@
 			</tr>
                     </tbody>
                 </table>
+                
+                <h1>Test Table</h1>
+                <table id="test" class="display">
+                    <thead>
+                        <th>Emp ID Num</th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                    </thead>
+                    <tbody>
+                        <%
+                            Class.forName("com.mysql.jdbc.Driver");
+                            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/alliance rms", "root", "");
+                            Statement stmt = conn.createStatement();
+                            String sql = "SELECT EmpIDNum, FirstName, MiddleName, LastName FROM employee";
+                            ResultSet rs = stmt.executeQuery(sql); 
+                            while (rs.next()) {
+                                int id = rs.getInt("EmpIDNum");
+                                String first = rs.getString("FirstName");
+                                String middle = rs.getString("MiddleName");
+                                String last = rs.getString("LastName");
+                        %>
+                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
+                            <td><%=id%></td>
+                            <td><%=first%></td>
+                            <td><%=middle%></td>
+                            <td><%=last%></td>
+                        </tr>
+                        <%
+                            }
+                            rs.close();
+                        %>
+                    </tbody>
+                </table>
+                    
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">Employee Information</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tbody>
+                                        <div class="container">
+
+                                            <div class="input-group">
+                                                
+                                            </div><!-- /input-group -->
+                                        </div><!-- /.col-lg-6 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Modal -->   
+                    
+                
             </div> <!-- Thumbnail -->
         </div> <!-- Container -->
     </body>
