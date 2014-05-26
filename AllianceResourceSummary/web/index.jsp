@@ -1,24 +1,29 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<%-- 
+    Document   : index
+    Created on : May 10, 2014, 10:37:35 PM
+    Author     : Michael
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ page import="java.sql.*" %>
 <html>
     <head>
         <title>Alliance Resource Management System</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="media/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/e9421181788/integration/bootstrap/3/dataTables.bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="media/css/dataTables.bootstrap.css">
+        <script src="media/js/complete.js" type="text/javascript" ></script>
         <script src="media/js/jquery.js" type="text/javascript"></script>
-        <script src="media/js/jquery.dataTables.js" type="text/javascript"></script>    
         <script src="media/js/bootstrap.js" type="text/javascript"></script>
+        <script src="media/js/jquery.dataTables.js" type="text/javascript"></script>    
+        <script src="media/js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
+
         <style type="text/css">
             @import "media/css/jquery.dataTables.css";
         </style>
         <style>
             .container{
-                width: 750px;
+               
                 margin-left: auto;
      		margin-right: auto;				
             } 
@@ -30,6 +35,8 @@ and open the template in the editor.
             }
             .container-fluid{
                 background-color: #f5f5f5;
+                 margin-left: auto;
+     		margin-right: auto;
             }
             body{
                 padding-bottom: 70px;
@@ -37,145 +44,203 @@ and open the template in the editor.
         </style>  
         <script type="text/javascript">
             $(document).ready(function(){
-                $('#datatables').dataTable();
-                $('#test').dataTable();
+                $('#datatables').dataTable().columnFilter({
+                    
+                    aoColumns: [ null,
+				    null,
+				     { type: "select", values: [ '1', '0.5', '0']  },
+				      { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  },
+                                     { type: "select", values: [ '1', '0.5', '0']  }
+                                     
+                                                                         
+            ]
+                });
+                
+                 /*var table = $('#datatables').DataTable();
+                 
+                 $("#example thead th").each( function ( i ) {
+        var select = $('<select><option value=""></option></select>')
+            .appendTo( $(this).empty() )
+            .on( 'change', function () {
+                table.column( i )
+                    .search( $(this).val() )
+                    .draw();
+            } );
+ 
+        table.column( i ).data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' );
+        } );
+    } );*/
+                
             });
         </script>
     </head>
     <body >
         <div class="container" >
-            <div class="thumbnail">
-                <img src="media/images/header_logo.jpg" class="img-rounded" style="margin-left: 0px" alt="Responsive image">
+            <div class="row">
+             <div style="background-color: #f5f5f5">
+                <img src="media/images/header_logo.jpg" class="img-rounded" alt="Responsive image">
+             </div>
                 <nav class="navbar navbar-default " role="navigation">
                     <div class="container-fluid">
 			<ul class="nav navbar-nav ">
                             <li><a href="#"> Project Summary</a></li>
-                            <li><a href="index.php"> Resource Summary</a></li>
+                            <li><a href="index.jsp"> Resource Summary</a></li>
 			</ul>
                     </div>
                 </nav>
+                
+            </div>
 
-                <!--table1-->
-                <table  id="datatables" class="display">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-4">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th><h3>Summary:</h3></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold">Total Head Count:</td>
+                                    <td> 1000</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold"> Employees per business unit: </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Philippines</td>
+                                    <td>200</td>
+                                </tr>
+                                <tr>
+                                    <td>Japan</td>
+                                    <td>400</td>
+                                </tr>
+                                <tr>
+                                    <td>Rest of the World</td>
+                                    <td>400</td>
+                                </tr>
+                                <tr>
+                                    <td>Alliance</td>
+                                    <td>1000</td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight: bold">Jobless:</td>
+                                    <td>Over 9000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-7">	
+                <table  id="datatables" class="display table">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>                       
-                            <th>Mar</th>
-                            <th>Apr</th>
+                            <th>Mardsgsdfgdgdgs</th>
+                            <th>April</th>
                             <th>May</th>
                             <th>Jun</th>
                             <th>Jul</th>
                             <th>Aug</th>
                             <th>Sept</th>
                             <th>Oct</th>
-                            <th>Nov</th>
+                            <th>November</th>
 
                         </tr>
                     </thead>
-                    <tbody>
+                    <tfoot>
                         <tr>
+                            <th>ID</th>
+                            <th>Name</th>                       
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                    
+                    <tbody>
+                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
                             <td>01</td>
                             <td>Amber</td>						
-                            <td>11.6</td>
-                            <td>78.4</td>
-                            <td>11.6</td>
-                            <td>78.4</td>
-                            <td>11.6</td>
-                            <td>78.4</td>
-                            <td>11.6</td>
-                            <td>78.4</td>
-                            <td>11.6</td>
+                            <td>1</td>
+                            <td>0.5</td>
+                            <td>1</td>
+                            <td>0.5</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
                         </tr>
-                        <tr>
+                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
                             <td>02</td>
                             <td>Navin</td>						
-                            <td>23.0</td>
-                            <td>36.3</td>
-                            <td>23.0</td>
-                            <td>36.3</td>
-                            <td>23.0</td>
-                            <td>36.3</td>
-                            <td>23.0</td>
-                            <td>36.3</td>
-                            <td>23.0</td>			
+                            <td>0</td>
+                            <td>0.5</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0.5</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>			
                         </tr>
-                        <tr>
+                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
                             <td>03</td>
                             <td>Stephanie</td>						
-                            <td>4.7</td> 
-                            <td>8.4</td>
-                            <td>4.7</td> 
-                            <td>8.4</td>
-                            <td>4.7</td> 
-                            <td>8.4</td>
-                            <td>4.7</td> 
-                            <td>8.4</td>
-                            <td>4.7</td> 
+                            <td>1</td> 
+                            <td>1</td>
+                            <td>1</td> 
+                            <td>0</td>
+                            <td>0</td> 
+                            <td>0</td>
+                            <td>0</td> 
+                            <td>1</td>
+                            <td>0</td> 
                         </tr>
-                            <tr>
+                            <tr class="tbrow" data-toggle="modal" data-target="#myModal">
                             <td>04</td>
                             <td>Ted</td>						
-                            <td>3.6</td> 
-                            <td>37.4</td>
-                            <td>3.6</td> 
-                            <td>37.4</td>
-                            <td>3.6</td> 
-                            <td>37.4</td>
-                            <td>3.6</td> 
-                            <td>37.4</td>
-                            <td>3.6</td> 
+                            <td>1</td> 
+                            <td>1</td>
+                            <td>1</td> 
+                            <td>1</td>
+                            <td>0</td> 
+                            <td>0</td>
+                            <td>0</td> 
+                            <td>0.5</td>
+                            <td>0</td> 
                         </tr>
-                        <tr>
+                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
                             <td>05</td>
                             <td>John</td>										<td>3.1</td>
-                            <td>79.9</td>
-                            <td>3.1</td>
-                            <td>79.9</td>
-                            <td>3.1</td>
-                            <td>79.9</td>
-                            <td>3.1</td>
-                            <td>79.9</td>
-                            <td>3.1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>0.5</td>
+                            <td>1</td>
+                            <td>0.5</td>
+                            <td>0.5</td>
+                            <td>1</td>
+                            <td>1</td>
 			</tr>
                     </tbody>
                 </table>
-                
-                <h1>Test Table</h1>
-                <table id="test" class="display">
-                    <thead>
-                        <th>Emp ID Num</th>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                    </thead>
-                    <tbody>
-                        <%
-                            Class.forName("com.mysql.jdbc.Driver");
-                            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/alliance rms", "root", "");
-                            Statement stmt = conn.createStatement();
-                            String sql = "SELECT EmpIDNum, FirstName, MiddleName, LastName FROM employee";
-                            ResultSet rs = stmt.executeQuery(sql); 
-                            while (rs.next()) {
-                                int id = rs.getInt("EmpIDNum");
-                                String first = rs.getString("FirstName");
-                                String middle = rs.getString("MiddleName");
-                                String last = rs.getString("LastName");
-                        %>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td><%=id%></td>
-                            <td><%=first%></td>
-                            <td><%=middle%></td>
-                            <td><%=last%></td>
-                        </tr>
-                        <%
-                            }
-                            rs.close();
-                        %>
-                    </tbody>
-                </table>
-                    
-                <!-- Modal -->
+                        <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -200,10 +265,10 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                </div><!-- Modal -->   
-                    
-                
-            </div> <!-- Thumbnail -->
+                </div><!-- Modal -->  
+                    </div>
+                    </div>
+           
         </div> <!-- Container -->
     </body>
 </html>
