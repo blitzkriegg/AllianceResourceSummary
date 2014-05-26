@@ -27,7 +27,7 @@ public class Employee {
     private int CollegeYear;
     private String JobTitles;
     private int NRIBatch;
-    private Effort effort;
+    private Effort effort = new Effort();
     
 
     public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
@@ -153,12 +153,11 @@ public class Employee {
     public Effort getEffort() {
         return effort;
     }
-
-    public void setEffort(ResultSet rs) throws SQLException {
+    
+    private void setEffort(ResultSet rs) throws SQLException {
         rs.previous();
         effort.setEffort(rs);
     }
-    
     public static Employee getEmployeeInfo(int empID) throws SQLException, Exception{
         ArrayList e_info = new ArrayList();
         String sql = "SELECT FirstName, MiddleName, LastName, "
@@ -184,6 +183,8 @@ public class Employee {
        e.setNRIBatch(rs.getInt("NRIBatch"));
        return e;
     }
+
+
 }
         
         

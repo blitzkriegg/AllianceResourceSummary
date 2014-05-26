@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 /**
  *
  * @author Carl
@@ -26,6 +27,11 @@ public class Database {
     private static Statement stmt = null;
     
     public Database(){
+        try {
+            dbConnect();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
         
     public static ResultSet doQuery(String sql) throws SQLException, Exception{
@@ -34,7 +40,6 @@ public class Database {
         dbConnect();
         try{
             rs = stmt.executeQuery(sql);
-            dbClose();
             return rs;
         } catch(SQLException se){
             se.printStackTrace();
