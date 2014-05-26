@@ -51,7 +51,6 @@
                 $('#datatables').dataTable().columnFilter({
                     
                     aoColumns: [ null,
-				    null,
 				     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
 				     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
                                      { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
@@ -114,9 +113,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <%
+                                    int totcount, phcount, jpcount, rowcount, alliancecount;
+                                    Database databasesum = new Database();
+                                    Summary summary = new Summary();
+                                    databasesum.dbConnect();
+                                    
+                                    totcount = summary.getNumOfEmployees();
+                                    phcount = summary.getCountPH() ;
+                                    jpcount = summary.getCountJP();
+                                    rowcount = summary.getCountRoW();
+                                    alliancecount = summary.getCountAl();
+                                %>
                                 <tr>
                                     <td style="font-weight: bold">Total Head Count:</td>
-                                    <td> 1000</td>
+                                    <td><%= totcount%></td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight: bold"> Employees per business unit: </td>
@@ -124,32 +135,33 @@
                                 </tr>
                                 <tr>
                                     <td>Philippines</td>
-                                    <td>200</td>
+                                    <td><%= phcount%></td>
                                 </tr>
                                 <tr>
                                     <td>Japan</td>
-                                    <td>400</td>
+                                    <td><%= jpcount%></td>
                                 </tr>
                                 <tr>
                                     <td>Rest of the World</td>
-                                    <td>400</td>
+                                    <td><%= rowcount%></td>
                                 </tr>
                                 <tr>
                                     <td>Alliance</td>
-                                    <td>1000</td>
+                                    <td><%= alliancecount%></td>
                                 </tr>
                                 <tr>
                                     <td style="font-weight: bold">Jobless:</td>
                                     <td>Over 9000</td>
                                 </tr>
+                                <% databasesum.dbClose();%>
                             </tbody>
                         </table>    <!--summary table-->
                     </div>
                     <div class="col-md-7">	
-                <table id="datatables" class="display table">
+                <!-- employee list table-->
+                <table id="datatables" class="display table">   
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>  
                             <th>Jan</th>
                             <th>Feb</th>
@@ -181,6 +193,19 @@
                             <th> - </th>
                             <th> - </th>
                             <th> - </th>
+                            <th></th>                       
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                     </tfoot>
                     
@@ -205,8 +230,7 @@
                                 months = effort.getMonths();
                         %>
                             <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                                <td></td>
-                                <td><%= employee.getFirstName()%><%= employee.getMiddleName() %><%= employee.getLastName()%></td>						
+                                <td><%= employee.getFirstName()%>&nbsp;<%= employee.getMiddleName() %>&nbsp;<%= employee.getLastName()%></td>						
                                 <td><%= months[0]%></td>
                                 <td><%= months[1]%></td>
                                 <td><%= months[2]%></td>
@@ -223,6 +247,7 @@
                      
                         <%        
                             }
+                            database.dbClose();
                         %>
                     </tbody>
                 </table>
