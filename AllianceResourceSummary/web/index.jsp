@@ -45,7 +45,7 @@ and open the template in the editor.
     <body >
         <div class="container" >
             <div class="thumbnail">
-                <img src="header_logo.jpg" class="img-rounded" style="margin-left: 0px" alt="Responsive image">
+                <img src="media/images/header_logo.jpg" class="img-rounded" style="margin-left: 0px" alt="Responsive image">
                 <nav class="navbar navbar-default " role="navigation">
                     <div class="container-fluid">
 			<ul class="nav navbar-nav ">
