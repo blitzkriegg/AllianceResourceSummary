@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * @author Carl
  */
 public class Employee {
+    private static ArrayList<Employee> e_list;                //List of Employees
     private String FirstName;
     private String MiddleName;
     private String LastName;
@@ -29,7 +30,6 @@ public class Employee {
     private int NRIBatch;
   
     public static ArrayList<Employee> getEmployeeList(){
-        ArrayList<Employee> e_list = new <Employee>ArrayList();                //List of Employees
         
         return e_list;
     }
@@ -147,7 +147,6 @@ public class Employee {
                 + "FROM employee "
                 + "WHERE EmpIDNum ="+empID;
        ResultSet rs = Database.doQuery(sql);
-       boolean notEmpty = rs.next();
        Employee e = new Employee();
        e.setFirstName(rs.getString("FirstName"));
        e.setMiddleName(rs.getString("MiddleName"));
