@@ -32,7 +32,7 @@ public class Employee {
 
     public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
         ArrayList <Employee>e_list = new ArrayList<Employee>();                //List of Employees
-        String sql = "SELECT employee.FirstName, effort.* "
+        String sql = "SELECT employee.FirstName, employee.MiddleName, employee.LastName, effort.* "
                 + "FROM employee "
                 + "LEFT JOIN employee_gen ON employee.EmpIDNum = employee_gen.emp_id "
                 + "LEFT JOIN effort ON employee_gen.effortgen_id = effort.effort_id";
@@ -40,6 +40,8 @@ public class Employee {
         while(rs.next()){
             Employee e = new Employee();
             e.setFirstName(rs.getString("FirstName"));
+            e.setMiddleName(rs.getString("MiddleName"));
+            e.setLastName(rs.getString("LastName"));
             e.setEffort(rs);
             e_list.add(e);
         }

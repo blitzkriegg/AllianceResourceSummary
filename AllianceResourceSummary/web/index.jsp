@@ -262,11 +262,10 @@
                             ArrayList<Employee> e_list = new ArrayList();
                             e_list = employee.getEmployeeList();
                             size = e_list.size();
-                                                  
                             
-                            while(size > 0){
+                            for(int i = 0; i < size; i++){
                                 employee = new Employee();
-                                employee = e_list.get(size);
+                                employee = e_list.get(i);
                                 effort = employee.getEffort();
                                 months = effort.getMonths();
                         %>
