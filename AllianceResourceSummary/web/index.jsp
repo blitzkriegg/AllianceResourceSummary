@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.myapp.data.*"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +18,7 @@
         <script src="media/js/jquery.js" type="text/javascript"></script>
         <script src="media/js/bootstrap.js" type="text/javascript"></script>
         <script src="media/js/jquery.dataTables.js" type="text/javascript"></script>    
-        <script src="media/js/jquery.dataTables.columnFilter.js" type="text/javascript"></script>
+        <script src="media/js/jquery.dataTables.columnFilter.js" type="text/javascript" ></script>
 
         <style type="text/css">
             @import "media/css/jquery.dataTables.css";
@@ -41,6 +43,8 @@
             body{
                 padding-bottom: 70px;
             }
+            
+          
         </style>  
         <script type="text/javascript">
             $(document).ready(function(){
@@ -48,16 +52,18 @@
                     
                     aoColumns: [ null,
 				    null,
-				     { type: "select", values: [ '1', '0.5', '0']  },
-				      { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  },
-                                     { type: "select", values: [ '1', '0.5', '0']  }
-                                     
+				     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+				     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
+                                     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  }
                                                                          
             ]
                 });
@@ -99,8 +105,8 @@
             </div>
 
                 <div class="row">
-                    <div class="col-xs-6 col-sm-4">
-                        <table class="table table-bordered">
+                    <div class="col-xs-6 col-sm-4"> <!--summary div-->
+                        <table id="summary" class="table table-bordered"> <!--summary table-->
                             <thead>
                                 <tr>
                                     <th><h3>Summary:</h3></th>
@@ -137,39 +143,44 @@
                                     <td>Over 9000</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table>    <!--summary table-->
                     </div>
                     <div class="col-md-7">	
-                <table  id="datatables" class="display table">
+                <table id="datatables" class="display table">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>                       
-                            <th>Mardsgsdfgdgdgs</th>
-                            <th>April</th>
+                            <th>Name</th>  
+                            <th>Jan</th>
+                            <th>Feb</th>
+                            <th>Mar</th>
+                            <th>Apr</th>
                             <th>May</th>
                             <th>Jun</th>
                             <th>Jul</th>
                             <th>Aug</th>
                             <th>Sept</th>
                             <th>Oct</th>
-                            <th>November</th>
-
+                            <th>Nov</th>
+                            <th>Dec</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>                       
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                     </tfoot>
                     
@@ -228,7 +239,8 @@
                         </tr>
                         <tr class="tbrow" data-toggle="modal" data-target="#myModal">
                             <td>05</td>
-                            <td>John</td>										<td>3.1</td>
+                            <td>John</td>
+                            <td>1</td>
                             <td>1</td>
                             <td>1</td>
                             <td>0.5</td>
@@ -238,8 +250,48 @@
                             <td>1</td>
                             <td>1</td>
 			</tr>
+                        <%
+                            Database database = new Database();
+                            Employee employee = new Employee();
+                            Effort effort = new Effort();
+                            float[] months=new float[12];;
+                            int size;
+                            
+                            database.dbConnect();
+                            ArrayList<Employee> e_list = new <Employee>ArrayList();
+                            e_list = employee.getEmployeeList();
+                            size = e_list.size();
+                            
+                            while(size > 0){
+                                employee = new Employee();
+                                employee = e_list.get(size);
+                                effort = employee.getEffort();
+                                months = effort.getMonths();
+                        %>
+                            <tr class="tbrow" data-toggle="modal" data-target="#myModal">
+                                <td></td>
+                                <td><%= employee.getFirstName()%><%= employee.getMiddleName() %><%= employee.getLastName()%></td>						
+                                <td><%= months[0]%></td>
+                                <td><%= months[1]%></td>
+                                <td><%= months[2]%></td>
+                                <td><%= months[3]%></td>
+                                <td><%= months[4]%></td>
+                                <td><%= months[5]%></td>
+                                <td><%= months[6]%></td>
+                                <td><%= months[7]%></td>
+                                <td><%= months[8]%></td>
+                                <td><%= months[9]%></td>
+                                <td><%= months[10]%></td>
+                                <td><%= months[11]%></td>
+                            </tr>
+                     
+                        <%        
+                                size--;
+                            }
+                        %>
                     </tbody>
                 </table>
+                        <p>Note: To refresh the table, select " - " in the dropdown menu from the column you have filtered. </p>
                         <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

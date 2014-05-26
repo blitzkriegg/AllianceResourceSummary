@@ -19,7 +19,7 @@ import java.sql.Statement;
 public class Database {
     //database credentials
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DB_URL = "jdbc:mysql://localhost/alliance rms";
+    private static final String DB_URL = "jdbc:mysql://localhost/alliance";
     private static final String USER = "root";
     private static final String PASS = "";
     private static Connection conn = null;
