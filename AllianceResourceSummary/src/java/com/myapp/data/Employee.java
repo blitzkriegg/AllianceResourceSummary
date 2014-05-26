@@ -29,6 +29,7 @@ public class Employee {
     private int NRIBatch;
     private Effort effort;
     
+
     public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
         ArrayList <Employee>e_list = new ArrayList<Employee>();                //List of Employees
         String sql = "SELECT a.FirstName, c.* "
