@@ -59,7 +59,7 @@ public class Database {
                     conn.close();
                 }
             } catch (SQLException se) {
-            }// do nothing
+            }
             try {
                 if (conn != null) {
                     conn.close();
