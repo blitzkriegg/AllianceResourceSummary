@@ -169,87 +169,22 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>                       
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
-                            <th>-</th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
+                            <th> - </th>
                         </tr>
                     </tfoot>
                     
                     <tbody>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>01</td>
-                            <td>Amber</td>						
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>02</td>
-                            <td>Navin</td>						
-                            <td>0</td>
-                            <td>0.5</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>			
-                        </tr>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>03</td>
-                            <td>Stephanie</td>						
-                            <td>1</td> 
-                            <td>1</td>
-                            <td>1</td> 
-                            <td>0</td>
-                            <td>0</td> 
-                            <td>0</td>
-                            <td>0</td> 
-                            <td>1</td>
-                            <td>0</td> 
-                        </tr>
-                            <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>04</td>
-                            <td>Ted</td>						
-                            <td>1</td> 
-                            <td>1</td>
-                            <td>1</td> 
-                            <td>1</td>
-                            <td>0</td> 
-                            <td>0</td>
-                            <td>0</td> 
-                            <td>0.5</td>
-                            <td>0</td> 
-                        </tr>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>05</td>
-                            <td>John</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>1</td>
-			</tr>
                         <%
                             Database database = new Database();
                             Employee employee = new Employee();
@@ -262,7 +197,7 @@
                             ArrayList<Employee> e_list = new ArrayList();
                             e_list = employee.getEmployeeList();
                             size = e_list.size();
-                            
+
                             for(int i = 0; i < size; i++){
                                 employee = new Employee();
                                 employee = e_list.get(i);
@@ -287,7 +222,6 @@
                             </tr>
                      
                         <%        
-                                size--;
                             }
                         %>
                     </tbody>
