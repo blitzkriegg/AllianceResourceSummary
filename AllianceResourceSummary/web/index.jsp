@@ -19,7 +19,16 @@
         <script src="media/js/bootstrap.js" type="text/javascript"></script>
         <script src="media/js/jquery.dataTables.js" type="text/javascript"></script>    
         <script src="media/js/jquery.dataTables.columnFilter.js" type="text/javascript" ></script>
-
+        <script>
+            $(document).ready(function() {                        
+                $('#submit').click(function() {  
+                    var username=$('#user').val();
+                 $.get('ActionServlet',{user:username},function(responseText) { 
+                        $('#modalbody').text(responseText);         
+                    });
+                });
+            });
+        </script>
         <style type="text/css">
             @import "media/css/jquery.dataTables.css";
         </style>
@@ -87,6 +96,23 @@
         </script>
     </head>
     <body >
+        
+        <form id="form1">
+        <h1>AJAX Demo using Jquery in JSP and Servlet</h1>
+        Enter your Name:
+        <input type="hidden" id="user" value="michael"/>
+        <input type="button" id="submit" value="qwerqer"/>
+        <tr class="tbrow" id="tablerow"></tr>
+        <br/>
+        <div id="welcometext">
+        </div>
+        </form>
+        
+        
+        
+        
+        
+        
         <div class="container" >
             <div class="row">
              <div style="background-color: #f5f5f5">
@@ -215,22 +241,24 @@
                                 effort = employee.getEffort();
                                 months = effort.getMonths();
                         %>
-                            <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                                <td><%= employee.getFirstName()%>&nbsp;<%= employee.getMiddleName() %>&nbsp;<%= employee.getLastName()%></td>						
-                                <td><%= months[0]%></td>
-                                <td><%= months[1]%></td>
-                                <td><%= months[2]%></td>
-                                <td><%= months[3]%></td>
-                                <td><%= months[4]%></td>
-                                <td><%= months[5]%></td>
-                                <td><%= months[6]%></td>
-                                <td><%= months[7]%></td>
-                                <td><%= months[8]%></td>
-                                <td><%= months[9]%></td>
-                                <td><%= months[10]%></td>
-                                <td><%= months[11]%></td>
-                            </tr>
-                     
+                                <form id="form2">
+                                    <input type="hidden" id="user" value="<%= employee.getEmpIDNum()%>"/>
+                                    <tr class="tbrow" id="tablerow" data-toggle="modal" data-target="#myModal">
+                                        <td><%= employee.getFirstName()%>&nbsp;<%= employee.getMiddleName() %>&nbsp;<%= employee.getLastName()%></td>						
+                                        <td><%= months[0]%></td>
+                                        <td><%= months[1]%></td>
+                                        <td><%= months[2]%></td>
+                                        <td><%= months[3]%></td>
+                                        <td><%= months[4]%></td>
+                                        <td><%= months[5]%></td>
+                                        <td><%= months[6]%></td>
+                                        <td><%= months[7]%></td>
+                                        <td><%= months[8]%></td>
+                                        <td><%= months[9]%></td>
+                                        <td><%= months[10]%></td>
+                                        <td><%= months[11]%></td>
+                                    </tr>
+                                </form>
                         <%        
                             }
                             database.dbClose();
@@ -249,11 +277,8 @@
                             <div class="modal-body">
                                 <table>
                                     <tbody>
-                                        <div class="container">
+                                    <div class="container" id="modalbody">
 
-                                            <div class="input-group">
-                                                
-                                            </div><!-- /input-group -->
                                         </div><!-- /.col-lg-6 -->
                                     </tbody>
                                 </table>
