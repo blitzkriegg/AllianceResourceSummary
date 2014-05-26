@@ -32,10 +32,10 @@ public class Employee {
 
     public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
         ArrayList <Employee>e_list = new ArrayList<Employee>();                //List of Employees
-        String sql = "SELECT a.FirstName, c.* "
-                + "FROM employee a"
-                + "LEFT JOIN employee_gen b ON a.EmpIDNum = b.emp_id"
-                + "LEFT JOIN effort c ON b.effortgen_id = c.effort_id";
+        String sql = "SELECT employee.FirstName, effort.* "
+                + "FROM employee "
+                + "LEFT JOIN employee_gen ON employee.EmpIDNum = employee_gen.emp_id "
+                + "LEFT JOIN effort ON employee_gen.effortgen_id = effort.effort_id";
         ResultSet rs = Database.doQuery(sql);
         while(rs.next()){
             Employee e = new Employee();
