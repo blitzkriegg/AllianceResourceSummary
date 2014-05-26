@@ -258,7 +258,11 @@
                             int size;
                             
                             database.dbConnect();
+<<<<<<< HEAD
                             ArrayList<Employee> e_list = new ArrayList();
+=======
+                            ArrayList <Employee>e_list = new ArrayList();
+>>>>>>> 811a58833a1baecb5a8f9e3c6fc5a89b25c7f918
                             e_list = employee.getEmployeeList();
                             size = e_list.size();
                             

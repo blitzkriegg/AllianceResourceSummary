@@ -35,7 +35,7 @@ public class Summary {
         return numOfEmployees;
     }
 
-    public static void setNumOfEmployees() throws Exception {
+    private static void setNumOfEmployees() throws Exception {
         String sql= "SELECT Count(*) AS count FROM employee";
         ResultSet rs = Database.doQuery(sql);
         numOfEmployees = rs.getInt("count");
@@ -45,7 +45,7 @@ public class Summary {
         return countPH;
     }
 
-    public static void setCountPH() throws Exception {
+    private static void setCountPH() throws Exception {
         String sql= "SELECT Count(*) AS count FROM employee where BusinessUnit = Local";
         ResultSet rs = Database.doQuery(sql);
         countPH = rs.getInt("count");
@@ -55,7 +55,7 @@ public class Summary {
         return countJP;
     }
 
-    public static void setCountJP() throws Exception {
+    private static void setCountJP() throws Exception {
         String sql= "SELECT Count(*) AS count FROM employee where BusinessUnit = JPIndependent";
         ResultSet rs = Database.doQuery(sql);
         countJP = rs.getInt("count");
@@ -65,7 +65,7 @@ public class Summary {
         return countAl;
     }
 
-    public static void setCountAl() throws Exception {
+    private static void setCountAl() throws Exception {
         String sql= "SELECT Count(*) AS count FROM employee where BusinessUnit = Alliance";
         ResultSet rs = Database.doQuery(sql);
         countAl = rs.getInt("count");
@@ -75,7 +75,7 @@ public class Summary {
         return countRoW;
     }
 
-    public static void setCountRoW() throws Exception {
+    private static void setCountRoW() throws Exception {
         String sql= "SELECT Count(*) AS count FROM employee where BusinessUnit = ROW";
         ResultSet rs = Database.doQuery(sql);
         countRoW = rs.getInt("count");

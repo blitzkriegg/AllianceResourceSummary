@@ -30,7 +30,7 @@ public class Employee {
     private Effort effort;
     
     public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
-        ArrayList<Employee> e_list = new <Employee>ArrayList();                //List of Employees
+        ArrayList<Employee> e_list = new ArrayList();                //List of Employees
         String sql = "SELECT a.FirstName, c.* "
                 + "FROM employee a"
                 + "LEFT JOIN employee_gen b ON a.EmpIDNum = b.emp_id"
