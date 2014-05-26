@@ -29,16 +29,19 @@ public class Database {
     }
         
     public static ResultSet doQuery(String sql) throws SQLException, Exception{
-        ResultSet rs=null;
+        ResultSet rs;
         stmt = conn.createStatement();
         dbConnect();
         try{
             rs = stmt.executeQuery(sql);
+            dbClose();
+            return rs;
         } catch(SQLException se){
             se.printStackTrace();
+        } finally{
+            rs = stmt.executeQuery(sql);
+            return rs;
         }
-        dbClose();
-        return rs;
     }
     
     public static void dbConnect() throws SQLException, Exception{

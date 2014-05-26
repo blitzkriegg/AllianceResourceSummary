@@ -37,7 +37,7 @@ public class Employee {
                 + "LEFT JOIN employee_gen b ON a.EmpIDNum = b.emp_id"
                 + "LEFT JOIN effort c ON b.effortgen_id = c.effort_id";
         ResultSet rs = Database.doQuery(sql);
-        while(rs.next()!=false){
+        while(rs.next()){
             Employee e = new Employee();
             e.setFirstName(rs.getString("FirstName"));
             e.setEffort(rs);
