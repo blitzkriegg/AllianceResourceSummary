@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author Carl
  */
 public class Employee {
-    
     private String FirstName;
     private String MiddleName;
     private String LastName;
