@@ -51,7 +51,6 @@
                 $('#datatables').dataTable().columnFilter({
                     
                     aoColumns: [ null,
-				    null,
 				     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
 				     { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
                                      { type: "select", values: [ '1', '0.75', '0.5', '0.25', '0']  },
@@ -149,7 +148,6 @@
                 <table id="datatables" class="display table">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>  
                             <th>Jan</th>
                             <th>Feb</th>
@@ -167,8 +165,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>                       
+                            <th></th>                       
                             <th>-</th>
                             <th>-</th>
                             <th>-</th>
@@ -185,71 +182,6 @@
                     </tfoot>
                     
                     <tbody>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>01</td>
-                            <td>Amber</td>						
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>02</td>
-                            <td>Navin</td>						
-                            <td>0</td>
-                            <td>0.5</td>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>			
-                        </tr>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>03</td>
-                            <td>Stephanie</td>						
-                            <td>1</td> 
-                            <td>1</td>
-                            <td>1</td> 
-                            <td>0</td>
-                            <td>0</td> 
-                            <td>0</td>
-                            <td>0</td> 
-                            <td>1</td>
-                            <td>0</td> 
-                        </tr>
-                            <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>04</td>
-                            <td>Ted</td>						
-                            <td>1</td> 
-                            <td>1</td>
-                            <td>1</td> 
-                            <td>1</td>
-                            <td>0</td> 
-                            <td>0</td>
-                            <td>0</td> 
-                            <td>0.5</td>
-                            <td>0</td> 
-                        </tr>
-                        <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                            <td>05</td>
-                            <td>John</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>0.5</td>
-                            <td>0.5</td>
-                            <td>1</td>
-                            <td>1</td>
-			</tr>
                         <%
                             Database database = new Database();
                             Employee employee = new Employee();
@@ -270,7 +202,6 @@
                                 months = effort.getMonths();
                         %>
                             <tr class="tbrow" data-toggle="modal" data-target="#myModal">
-                                <td></td>
                                 <td><%= employee.getFirstName()%><%= employee.getMiddleName() %><%= employee.getLastName()%></td>						
                                 <td><%= months[0]%></td>
                                 <td><%= months[1]%></td>
