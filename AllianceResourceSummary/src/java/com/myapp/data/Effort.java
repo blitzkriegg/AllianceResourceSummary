@@ -49,7 +49,7 @@ public class Effort {
     }
        
     public boolean setEffort(ResultSet rs){ 
-        String[] mth= {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        String[] mth= {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
         int i; 
         boolean notEmpty=false;
         try{ 
