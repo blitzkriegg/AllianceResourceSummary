@@ -116,8 +116,8 @@
                                 <%
                                     int totcount, phcount, jpcount, rowcount, alliancecount;
                                     Database databasesum = new Database();
-                                    Summary summary = new Summary();
                                     databasesum.dbConnect();
+                                    Summary summary = new Summary();
                                     
                                     totcount = summary.getNumOfEmployees();
                                     phcount = summary.getCountPH() ;
@@ -151,7 +151,7 @@
                                 </tr>
                                 <tr>
                                     <td style="font-weight: bold">Jobless:</td>
-                                    <td>Over 9000</td>
+                                    <td><%= totcount - (phcount + jpcount + rowcount + alliancecount)%></td>
                                 </tr>
                                 <% databasesum.dbClose();%>
                             </tbody>
