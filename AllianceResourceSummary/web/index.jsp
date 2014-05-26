@@ -21,7 +21,7 @@
         <script src="media/js/jquery.dataTables.columnFilter.js" type="text/javascript" ></script>
         <script>
             $(document).ready(function() {                        
-                $('#submit').click(function() {  
+                $('#tablerow').click(function() {  
                     var username=$('#user').val();
                  $.get('ActionServlet',{user:username},function(responseText) { 
                         $('#modalbody').text(responseText);         
@@ -96,23 +96,6 @@
         </script>
     </head>
     <body >
-        
-        <form id="form1">
-        <h1>AJAX Demo using Jquery in JSP and Servlet</h1>
-        Enter your Name:
-        <input type="hidden" id="user" value="michael"/>
-        <input type="button" id="submit" value="qwerqer"/>
-        <tr class="tbrow" id="tablerow"></tr>
-        <br/>
-        <div id="welcometext">
-        </div>
-        </form>
-        
-        
-        
-        
-        
-        
         <div class="container" >
             <div class="row">
              <div style="background-color: #f5f5f5">
