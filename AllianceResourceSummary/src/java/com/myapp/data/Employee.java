@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author Carl
  */
 public class Employee {
-    private int EmpIDNum;
     private String FirstName;
     private String MiddleName;
     private String LastName;
@@ -33,14 +32,13 @@ public class Employee {
 
     public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
         ArrayList <Employee>e_list = new ArrayList<Employee>();                //List of Employees
-        String sql = "SELECT employee.EmpIDNum, employee.FirstName, employee.MiddleName, employee.LastName, effort.* "
+        String sql = "SELECT employee.FirstName, employee.MiddleName, employee.LastName, effort.* "
                 + "FROM employee "
                 + "LEFT JOIN employee_gen ON employee.EmpIDNum = employee_gen.emp_id "
                 + "LEFT JOIN effort ON employee_gen.effortgen_id = effort.effort_id";
         ResultSet rs = Database.doQuery(sql);
         while(rs.next()){
             Employee e = new Employee();
-            e.setEmpIDNum(rs.getInt("EmpIDNum"));
             e.setFirstName(rs.getString("FirstName"));
             e.setMiddleName(rs.getString("MiddleName"));
             e.setLastName(rs.getString("LastName"));
@@ -50,13 +48,6 @@ public class Employee {
         return e_list;
     }
 
-    public int getEmpIDNum() {
-        return EmpIDNum;
-    }
-
-    public void setEmpIDNum(int EmpIDNum) {
-        this.EmpIDNum = EmpIDNum;
-    }
     public String getFirstName() {
         return FirstName;
     }
