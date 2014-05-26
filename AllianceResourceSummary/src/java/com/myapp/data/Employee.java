@@ -30,7 +30,6 @@ public class Employee {
   
     public static ArrayList<Employee> getEmployeeList(){
         ArrayList<Employee> e_list = new <Employee>ArrayList();                //List of Employees
-        
         return e_list;
     }
 
