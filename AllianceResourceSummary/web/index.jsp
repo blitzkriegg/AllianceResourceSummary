@@ -179,21 +179,7 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
-                            <th>Name</th>                       
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th> - </th>
-                            <th></th>                       
+                            <th>Name</th>                                           
                             <th>-</th>
                             <th>-</th>
                             <th>-</th>
