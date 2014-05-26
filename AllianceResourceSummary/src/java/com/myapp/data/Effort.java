@@ -47,7 +47,7 @@ public class Effort {
     public void setYear(int year){
         this.year = year;
     }
-    
+       
     public boolean setEffort(ResultSet rs){ 
         String[] mth= {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
         int i; 

@@ -28,7 +28,7 @@ public class Database {
     public Database(){
     }
         
-    public static ResultSet doQuery(String sql){
+    public static ResultSet doQuery(String sql) throws SQLException, Exception{
         ResultSet rs=null;
         dbConnect();
         try{
@@ -40,7 +40,7 @@ public class Database {
         return rs;
     }
     
-    public static void dbConnect(){
+    public static void dbConnect() throws SQLException, Exception{
         try{
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Connecting to a selected database...");
@@ -53,7 +53,7 @@ public class Database {
         }
     }
     
-    public static void dbClose(){
+    public static void dbClose() throws SQLException, Exception{
         try {
                 if (stmt != null) {
                     conn.close();

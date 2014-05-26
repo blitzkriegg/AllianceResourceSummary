@@ -27,10 +27,21 @@ public class Employee {
     private int CollegeYear;
     private String JobTitles;
     private int NRIBatch;
-  
-    public static ArrayList<Employee> getEmployeeList(){
+    private Effort effort;
+    
+    public static ArrayList<Employee> getEmployeeList() throws SQLException, Exception{
         ArrayList<Employee> e_list = new <Employee>ArrayList();                //List of Employees
-        
+        String sql = "SELECT a.FirstName, c.* "
+                + "FROM employee a"
+                + "LEFT JOIN employee_gen b ON a.EmpIDNum = b.emp_id"
+                + "LEFT JOIN effort c ON b.effortgen_id = c.effort_id";
+        ResultSet rs = Database.doQuery(sql);
+        while(rs.next()!=false){
+            Employee e = new Employee();
+            e.setFirstName(rs.getString("FirstName"));
+            e.setEffort(rs);
+            e_list.add(e);
+        }
         return e_list;
     }
 
@@ -138,8 +149,16 @@ public class Employee {
         this.NRIBatch = NRIBatch;
     }
     
+    public Effort getEffort() {
+        return effort;
+    }
+
+    public void setEffort(ResultSet rs) throws SQLException {
+        rs.previous();
+        effort.setEffort(rs);
+    }
     
-    public static Employee getEmployeeInfo(int empID) throws SQLException{
+    public static Employee getEmployeeInfo(int empID) throws SQLException, Exception{
         ArrayList e_info = new ArrayList();
         String sql = "SELECT FirstName, MiddleName, LastName, "
                 + "BusinessUnit, DateHired, YearsITIndustry, CollegeSchool1, CollegeSchool2,"
