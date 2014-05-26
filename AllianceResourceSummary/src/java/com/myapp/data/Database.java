@@ -30,6 +30,7 @@ public class Database {
         
     public static ResultSet doQuery(String sql) throws SQLException, Exception{
         ResultSet rs=null;
+        stmt = conn.createStatement();
         dbConnect();
         try{
             rs = stmt.executeQuery(sql);
