@@ -12,11 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.myapp.data.*;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Michael
@@ -34,19 +29,21 @@ public class ActionServlet extends HttpServlet {
         Database database = new Database();
         Employee employee = new Employee();
         String json=null;
+        int id = Integer.parseInt(request.getParameter("empID").toString());
+        Gson gson = new Gson();
         try {
             database.dbConnect();
-            json = new Gson().toJson(employee.getEmployeeInfo('1'));
-            response.setContentType("application/json");  
+            employee = employee.getEmployeeInfo(id);
+            json = gson.toJson(employee);
+            response.setContentType("text/plain");  
             response.setCharacterEncoding("UTF-8"); 
             response.getWriter().write(json); 
                  
-        } catch (SQLException ex) {
-            Logger.getLogger(ActionServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(ActionServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (Exception ex) {
+            ex.printStackTrace();
         }
- }
+    }
+
 
   
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

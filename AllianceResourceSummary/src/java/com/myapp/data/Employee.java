@@ -172,7 +172,7 @@ public class Employee {
     }
     public static Employee getEmployeeInfo(int empID) throws SQLException, Exception{
         ArrayList e_info = new ArrayList();
-        String sql = "SELECT FirstName, MiddleName, LastName, "
+        String sql = "SELECT EmpIDNum, FirstName, MiddleName, LastName, "
                 + "BusinessUnit, DateHired, YearsITIndustry, CollegeSchool1, CollegeSchool2,"
                 + "CollegeCourse1, CollegeCourse2, CollegeYear, JobTitles, NRIBatch "
                 + "FROM employee "
@@ -180,6 +180,7 @@ public class Employee {
        ResultSet rs = Database.doQuery(sql);
        boolean notEmpty = rs.next();
        Employee e = new Employee();
+       e.setEmpIDNum(rs.getInt("EmpIDNum"));
        e.setFirstName(rs.getString("FirstName"));
        e.setMiddleName(rs.getString("MiddleName"));
        e.setLastName(rs.getString("LastName"));

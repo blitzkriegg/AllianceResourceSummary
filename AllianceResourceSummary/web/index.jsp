@@ -86,20 +86,7 @@
             });
         </script>
     </head>
-    <body >
-        
-        <form id="form1">
-<h1>AJAX Demo using Jquery in JSP and Servlet</h1>
-Enter your Name:
-<input type="text" id="user" />
-<input type="button" id="submit" value="qwerqer"/>
-<tr class="tbrow" id="tablerow"></tr>
-<br/>
-<div id="welcometext">
-</div>
-</form>
-        
-        
+    <body>
         <div class="container" >
             <div class="row">
              <div style="background-color: #f5f5f5">
@@ -228,9 +215,9 @@ Enter your Name:
                                 effort = employee.getEffort();
                                 months = effort.getMonths();
                         %>
-                                <form id="form1">
-                                    <input type="hidden" id="empID" value="<%=employee.getEmpIDNum()%>"/>
+                                <form id="form1">     
                                     <tr class="tbrow" data-toggle="modal" data-target="#myModal">
+                                        <input type="hidden" class="empID" value="<%=employee.getEmpIDNum()%>"/>
                                         <td><%= employee.getFirstName()%>&nbsp;<%= employee.getMiddleName() %>&nbsp;<%= employee.getLastName()%></td>						
                                         <td><%= months[0]%></td>
                                         <td><%= months[1]%></td>
@@ -282,18 +269,25 @@ Enter your Name:
         </div> <!-- Container -->
         <script>
             $(document).ready(function() {                        
-                $('#submit').click(function(event) {  
-                    var username=$('#user').val();
-                    $.get('ActionServlet',{user:username},function(responseText) { 
-                        $('#welcometext').text(responseText);         
+                $( "#empbody" ).delegate( "tr", "click", function( e ){  
+                    var employeeid=$(this).find(".empID").val();
+                    $.get('ActionServlet',{empID:employeeid},function(responseText) { 
+                        var json = $.parseJSON(responseText);
+                        $('#modalbody').html("<h4>Basic Information</h4></br>Employee ID:  "+json.EmpIDNum+"</br>"
+                                            +"Name:  "+json.FirstName+"&nbsp"+json.MiddleName+"&nbsp"+json.LastName+"</br>"
+                                            +"Business Unit:  "+json.BusinessUnit+"</br></br>"
+                                            +"<h4>External and Tenure Information</h4></br>Date Hired:  "+json.DateHired+"</br>"
+                                            +"Years IT Industry:  "+json.YearsITIndustry+"</br>"
+                                            +"College School 1:  "+json.CollegeSchool1+"</br>"
+                                            +"College School 2:  "+json.CollegeSchool2+"</br>"
+                                            +"College Course 1:  "+json.CollegeCourse1+"</br>"
+                                            +"College Course 2:  "+json.CollegeCourse2+"</br>"
+                                            +"College Year:  "+json.CollegeYear+"</br>"
+                                            +"Job Titles:  "+json.JobTitles+"</br>"
+                                            +"NRI Batch:  "+json.NRIBatch+"</br>"
+                                            );         
                     });
                 });
-                $( "#empbody" ).delegate( "tr", "click", function( e ){} );{
-                    var username=$('#empID').val();
-                    $.get('ActionServlet',{user:username},function(responseText) { 
-                        $('#welcometext').text(responseText);         
-                    });
-                }   
             });
         </script>
     </body>
